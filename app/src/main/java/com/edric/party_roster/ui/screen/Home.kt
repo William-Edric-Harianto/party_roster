@@ -20,11 +20,10 @@ import com.edric.party_roster.viewmodel.HomeViewModel
 fun homeView(viewModel: HomeViewModel = viewModel()) {
     val heroes by viewModel.heroes.collectAsState()
 
-    // Sesuai dengan referensi arsitektur: Box > Column > Box > Box(Elements)[cite: 1]
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF10121A)) // Latar belakang tema gelap[cite: 2]
+            .background(Color(0xFF10121A))
     ) {
         Column(
             modifier = Modifier
@@ -38,7 +37,6 @@ fun homeView(viewModel: HomeViewModel = viewModel()) {
                 TopPartView()
             }
 
-            // Box Scrollable List
             Box(
                 modifier = Modifier.weight(6.5f)
             ) {

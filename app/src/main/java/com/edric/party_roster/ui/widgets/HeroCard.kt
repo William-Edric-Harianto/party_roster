@@ -28,7 +28,6 @@ import com.edric.party_roster.model.Hero
 fun HeroCardView(hero: Hero) {
     var expanded by remember { mutableStateOf(false) }
 
-    // Warna border kuning jika IN SQUAD
     val cardBorder = if (hero.isInSquad) {
         BorderStroke(1.dp, Color(0xFFFFC107))
     } else {
@@ -44,14 +43,14 @@ fun HeroCardView(hero: Hero) {
         colors = CardDefaults.cardColors(containerColor = Color(0xFF1E2232))
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            // --- TOP ROW: Tags & CP ---
+
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    // Rarity Tag
+
                     Card(
                         shape = RoundedCornerShape(4.dp),
                         colors = CardDefaults.cardColors(containerColor = hero.rarity.bgColor)
@@ -64,7 +63,7 @@ fun HeroCardView(hero: Hero) {
                             modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
                         )
                     }
-                    // Title Tag
+
                     Card(
                         shape = RoundedCornerShape(4.dp),
                         colors = CardDefaults.cardColors(containerColor = hero.title.bgColor)
@@ -107,12 +106,12 @@ fun HeroCardView(hero: Hero) {
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            // --- MIDDLE ROW: Image, Name, HP/MP ---
+
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // Character Image with Level Badge
+
                 Box(
                     modifier = Modifier
                         .size(70.dp)
@@ -143,7 +142,7 @@ fun HeroCardView(hero: Hero) {
 
                 Spacer(modifier = Modifier.width(16.dp))
 
-                // Name & Stats
+
                 Column(modifier = Modifier.weight(1f)) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
@@ -165,21 +164,21 @@ fun HeroCardView(hero: Hero) {
 
                     Spacer(modifier = Modifier.height(8.dp))
 
-                    // HP Bar
+
                     StatBarRow(title = "HP", value = hero.HP, maxValue = hero.maxHP, barColor = Color(0xFFFF5252))
                     Spacer(modifier = Modifier.height(6.dp))
-                    // MP Bar
+
                     StatBarRow(title = "MP", value = hero.MP, maxValue = hero.maxMP, barColor = Color(0xFF2196F3))
                 }
             }
 
-            // --- EXPANDED DROPDOWN SECTION ---
+
             AnimatedVisibility(visible = expanded) {
                 Column(modifier = Modifier.padding(top = 16.dp)) {
                     Divider(color = Color(0xFF2C2F40), thickness = 1.dp)
                     Spacer(modifier = Modifier.height(12.dp))
 
-                    // Stats Grid
+
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -192,7 +191,7 @@ fun HeroCardView(hero: Hero) {
 
                     Spacer(modifier = Modifier.height(12.dp))
 
-                    // Skill Info
+
                     Card(
                         colors = CardDefaults.cardColors(containerColor = Color(0xFF232635)),
                         shape = RoundedCornerShape(8.dp),
@@ -211,7 +210,7 @@ fun HeroCardView(hero: Hero) {
 
                     Spacer(modifier = Modifier.height(12.dp))
 
-                    // Action Buttons
+
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -240,7 +239,6 @@ fun HeroCardView(hero: Hero) {
     }
 }
 
-// Sub-komponen untuk Bar HP/MP agar nilainya variatif sesuai value[cite: 5, 6]
 @Composable
 fun StatBarRow(title: String, value: Int, maxValue: Int, barColor: Color) {
     Row(
@@ -249,7 +247,7 @@ fun StatBarRow(title: String, value: Int, maxValue: Int, barColor: Color) {
     ) {
         Text(text = title, color = Color.Gray, fontSize = 12.sp, modifier = Modifier.width(24.dp))
 
-        // Progress Bar Calculation
+
         val fraction = (value.toFloat() / maxValue.toFloat()).coerceIn(0f, 1f)
 
         Box(
@@ -272,7 +270,6 @@ fun StatBarRow(title: String, value: Int, maxValue: Int, barColor: Color) {
     }
 }
 
-// Sub-komponen untuk kotak stat di dalam Dropdown (ATK, DEF, dll)[cite: 7]
 @Composable
 fun StatBox(title: String, value: String, modifier: Modifier = Modifier) {
     Card(

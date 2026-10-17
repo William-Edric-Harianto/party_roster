@@ -27,7 +27,7 @@ fun TopPartView() {
             .fillMaxWidth()
             .padding(top = 16.dp, bottom = 8.dp)
     ) {
-        // --- HEADER SECTION ---
+
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -47,7 +47,7 @@ fun TopPartView() {
                 )
             }
 
-            // Expedition Button
+
             Card(
                 shape = RoundedCornerShape(16.dp),
                 border = BorderStroke(1.dp, Color(0xFFFFC107)),
@@ -76,7 +76,7 @@ fun TopPartView() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // --- SQUAD SECTION ---
+
         Card(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(16.dp),
@@ -118,7 +118,7 @@ fun TopPartView() {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    // Squad slots (Dummy Visuals)
+
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         repeat(3) {
                             Box(
@@ -127,7 +127,7 @@ fun TopPartView() {
                                     .background(Color.White, RoundedCornerShape(8.dp))
                             )
                         }
-                        // Empty slot
+
                         Box(
                             modifier = Modifier
                                 .size(48.dp)
@@ -138,7 +138,7 @@ fun TopPartView() {
                         }
                     }
 
-                    // Deploy Button
+
                     Button(
                         onClick = { /* Dummy action */ },
                         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFFC107)),
@@ -153,7 +153,7 @@ fun TopPartView() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // --- SEARCH BAR ---
+
         OutlinedTextField(
             value = "",
             onValueChange = {},
@@ -171,7 +171,7 @@ fun TopPartView() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // --- FILTER CHIPS (Horizontal Scroll) ---
+
         val filters = listOf("All (14)", "Berserker (2)", "Archmage (3)", "Paladin (3)", "Rogue (3)", "Cleric (3)")
         var selectedFilterIndex by remember { mutableStateOf(0) }
 
